@@ -53,12 +53,13 @@
 
     <div class="text-center mb-4">
       <h1 class="h3 fw-bold">Catalogue des Activités</h1>
+      <p class="text-secondary">Découvrez et filtrez nos 8 expériences incontournables dans la région du Cap Bon.</p>
     </div>
 
     <section class="card p-3 mb-4 shadow-sm">
       <div class="row g-3 align-items-center">
         <div class="col-12 col-md-5">
-          <label for="search-input" class="form-label small fw-bold mb-1">Recherche :</label>
+          <label for="search-input" class="form-label small fw-bold mb-1">Recherche par mot-clé :</label>
           <input type="text" id="search-input" class="form-control form-control-sm" placeholder="Ex: poterie, Nabeul, Kerkouane...">
         </div>
 
@@ -108,6 +109,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
         </div>
         <div class="modal-body">
+          <img id="modalActivityImage" src="" alt="Activité" class="img-fluid rounded mb-3 w-100" style="max-height: 220px; object-fit: cover;">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <span id="modalActivityBadge" class="badge bg-secondary"></span>
             <strong id="modalActivityPrix" class="text-success"></strong>

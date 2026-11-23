@@ -1,228 +1,169 @@
-const TARIFS_ACTIVITES = {
-  "A01": { titre: "Découverte de la médina — Nabeul", prix: 20 },
-  "A02": { titre: "Atelier d’initiation à la poterie — Nabeul", prix: 35 },
-  "A03": { titre: "Parcours découverte de Kerkouane — Kerkouane", prix: 30 },
-  "A04": { titre: "Randonnée découverte — Djebel Abderrahmane", prix: 25 },
-  "A05": { titre: "Circuit du littoral — Kélibia", prix: 40 },
-  "A06": { titre: "Peinture sur céramique — Nabeul", prix: 25 },
-  "A07": { titre: "Découverte d’un marché local — Nabeul", prix: 15 },
-  "A08": { titre: "Promenade photographique — Hammamet", prix: 30 }
+
+var prix = {
+  A01: 20, A02: 35, A03: 30, A04: 25,
+  A05: 40, A06: 25, A07: 15, A08: 30
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  initReservation();
-});
+var noms = {
+  A01: "Découverte de la médina — Nabeul",
+  A02: "Atelier d’initiation à la poterie — Nabeul",
+  A03: "Parcours découverte de Kerkouane — Kerkouane",
+  A04: "Randonnée découverte — Djebel Abderrahmane",
+  A05: "Circuit du littoral — Kélibia",
+  A06: "Peinture sur céramique — Nabeul",
+  A07: "Découverte d’un marché local — Nabeul",
+  A08: "Promenade photographique — Hammamet"
+};
 
-function initReservation() {
-  const form = document.getElementById('reservation-form');
-  const selectActivite = document.getElementById('activite');
-  const inputParticipants = document.getElementById('participants');
-  const inputDate = document.getElementById('date_visite');
-  const btnCalculer = document.getElementById('btn-calculer');
-  const btnReset = document.getElementById('btn-reset');
-  const alertContainer = document.getElementById('form-alerts');
-  const recapContainer = document.getElementById('recap-container');
+var formulaire = document.getElementById("reservation-form");
+var choixActivite = document.getElementById("activite");
+var champParticipants = document.getElementById("participants");
+var champDate = document.getElementById("date_visite");
+var zoneErreurs = document.getElementById("form-alerts");
+var zoneRecap = document.getElementById("recap-container");
 
-  if (inputDate) {
-    const todayStr = getTodayDateString();
-    inputDate.setAttribute('min', todayStr);
-  }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const preselectId = urlParams.get('id');
-  if (preselectId && TARIFS_ACTIVITES[preselectId] && selectActivite) {
-    selectActivite.value = preselectId;
-  }
-
-  updatePriceCalculation();
-
-  if (selectActivite) {
-    selectActivite.addEventListener('change', updatePriceCalculation);
-  }
-
-  if (inputParticipants) {
-    inputParticipants.addEventListener('input', updatePriceCalculation);
-    inputParticipants.addEventListener('change', updatePriceCalculation);
-  }
-
-  if (btnCalculer) {
-    btnCalculer.addEventListener('click', (e) => {
-      e.preventDefault();
-      updatePriceCalculation();
-    });
-  }
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      validateAndSimulate();
-    });
-  }
-
-  if (btnReset) {
-    btnReset.addEventListener('click', () => {
-      setTimeout(() => {
-        if (selectActivite) selectActivite.value = "A01";
-        if (inputParticipants) inputParticipants.value = "1";
-        updatePriceCalculation();
-
-        if (alertContainer) alertContainer.innerHTML = '';
-        if (recapContainer) recapContainer.classList.add('d-none');
-      }, 50);
-    });
-  }
+function dateAujourdhui() {
+  var d = new Date();
+  var mois = String(d.getMonth() + 1).padStart(2, "0");
+  var jour = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + mois + "-" + jour;
 }
 
-function getTodayDateString() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
+function calculer() {
+  var prixUnitaire = prix[choixActivite.value];
 
-function updatePriceCalculation() {
-  const selectActivite = document.getElementById('activite');
-  const inputParticipants = document.getElementById('participants');
-
-  const unitPriceEl = document.getElementById('display-unit-price');
-  const subtotalEl = document.getElementById('display-subtotal');
-  const discountEl = document.getElementById('display-discount');
-  const discountNoticeEl = document.getElementById('display-discount-notice');
-  const totalEl = document.getElementById('display-total');
-
-  const actId = selectActivite ? selectActivite.value : "A01";
-  const activityData = TARIFS_ACTIVITES[actId] || { titre: "", prix: 0 };
-  const unitPrice = activityData.prix;
-
-  let participants = parseInt(inputParticipants ? inputParticipants.value : 1, 10);
-  if (isNaN(participants) || participants < 1) {
-    participants = 1;
-  } else if (participants > 6) {
-    participants = 6;
+  var personnes = parseInt(champParticipants.value);
+  if (isNaN(personnes) || personnes < 1) {
+    personnes = 1;
+  }
+  if (personnes > 6) {
+    personnes = 6;
   }
 
-  const subtotal = unitPrice * participants;
-  
-  let discount = 0;
-  if (participants >= 4) {
-    discount = Math.round((subtotal * 0.10) * 100) / 100;
+  var sousTotal = prixUnitaire * personnes;
+
+  var remise = 0;
+  if (personnes >= 4) {
+    remise = sousTotal * 0.1;
   }
 
-  const total = subtotal - discount;
+  var total = sousTotal - remise;
 
-  if (unitPriceEl) unitPriceEl.textContent = `${unitPrice} TND`;
-  if (subtotalEl) subtotalEl.textContent = `${subtotal} TND`;
-  if (discountEl) discountEl.textContent = `${discount} TND`;
-  if (totalEl) totalEl.textContent = `${total} TND`;
+  document.getElementById("display-unit-price").textContent = prixUnitaire + " TND";
+  document.getElementById("display-subtotal").textContent = sousTotal + " TND";
+  document.getElementById("display-discount").textContent = remise + " TND";
+  document.getElementById("display-total").textContent = total + " TND";
 
-  if (discountNoticeEl) {
-    if (participants >= 4) {
-      discountNoticeEl.classList.remove('d-none');
-    } else {
-      discountNoticeEl.classList.add('d-none');
-    }
-  }
-
-  return { unitPrice, subtotal, discount, total, participants, activityData };
-}
-
-function validateAndSimulate() {
-  const alertContainer = document.getElementById('form-alerts');
-  const recapContainer = document.getElementById('recap-container');
-
-  const nom = document.getElementById('nom').value.trim();
-  const prenom = document.getElementById('prenom').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const telephone = document.getElementById('telephone').value.trim();
-  const activite = document.getElementById('activite').value;
-  const dateVisite = document.getElementById('date_visite').value;
-  const participants = parseInt(document.getElementById('participants').value, 10);
-  const participationType = document.querySelector('input[name="type_participation"]:checked');
-  const consent = document.getElementById('consentement').checked;
-
-  const errors = [];
-
-  if (!nom) errors.push("Le nom est obligatoire.");
-  if (!prenom) errors.push("Le prénom est obligatoire.");
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    errors.push("Veuillez saisir une adresse e-mail valide (ex: visiteur@exemple.tn).");
-  }
-
-  if (!telephone) {
-    errors.push("Le numéro de téléphone est obligatoire.");
-  }
-
-  if (!dateVisite) {
-    errors.push("La date souhaitée est obligatoire.");
+  var badge = document.getElementById("display-discount-notice");
+  if (personnes >= 4) {
+    badge.classList.remove("d-none");
   } else {
-    const todayStr = getTodayDateString();
-    if (dateVisite < todayStr) {
-      errors.push("La date de réservation ne peut pas être antérieure à la date d'aujourd'hui.");
+    badge.classList.add("d-none");
+  }
+
+  return { personnes: personnes, sousTotal: sousTotal, remise: remise, total: total };
+}
+
+function valider() {
+  var erreurs = [];
+
+  var nom = document.getElementById("nom").value.trim();
+  var prenom = document.getElementById("prenom").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var telephone = document.getElementById("telephone").value.trim();
+  var date = champDate.value;
+  var personnes = parseInt(champParticipants.value);
+  var type = document.querySelector('input[name="type_participation"]:checked');
+  var accepte = document.getElementById("consentement").checked;
+
+  var formeEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (nom === "") {
+    erreurs.push("Le nom est obligatoire.");
+  }
+  if (prenom === "") {
+    erreurs.push("Le prénom est obligatoire.");
+  }
+  if (!formeEmail.test(email)) {
+    erreurs.push("Veuillez saisir une adresse e-mail valide (ex: visiteur@exemple.tn).");
+  }
+  if (telephone === "") {
+    erreurs.push("Le numéro de téléphone est obligatoire.");
+  }
+  if (date === "") {
+    erreurs.push("La date souhaitée est obligatoire.");
+  } else if (date < dateAujourdhui()) {
+    erreurs.push("La date de réservation ne peut pas être antérieure à la date d'aujourd'hui.");
+  }
+  if (isNaN(personnes) || personnes < 1 || personnes > 6) {
+    erreurs.push("Le nombre de participants doit être compris entre 1 et 6 personnes.");
+  }
+  if (type === null) {
+    erreurs.push("Veuillez sélectionner un type de participation (individuel, famille ou groupe).");
+  }
+  if (!accepte) {
+    erreurs.push("Vous devez obligatoirement accepter les conditions de simulation pour continuer.");
+  }
+
+  if (erreurs.length > 0) {
+    zoneRecap.classList.add("d-none");
+
+    var liste = "";
+    for (var i = 0; i < erreurs.length; i++) {
+      liste += "<li>" + erreurs[i] + "</li>";
     }
-  }
-
-  if (isNaN(participants) || participants < 1 || participants > 6) {
-    errors.push("Le nombre de participants doit être compris entre 1 et 6 personnes.");
-  }
-
-  if (!participationType) {
-    errors.push("Veuillez sélectionner un type de participation (individuel, famille ou groupe).");
-  }
-
-  if (!consent) {
-    errors.push("Vous devez obligatoirement accepter les conditions de simulation pour continuer.");
-  }
-
-  if (errors.length > 0) {
-    if (recapContainer) recapContainer.classList.add('d-none');
-
-    let errorHtml = `
-      <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
-        <h5 class="alert-heading h6 fw-bold"><i class="bi bi-exclamation-triangle-fill me-2"></i>Erreur de validation</h5>
-        <ul class="mb-0 ps-3">
-          ${errors.map(err => `<li>${err}</li>`).join('')}
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
-      </div>
-    `;
-    if (alertContainer) alertContainer.innerHTML = errorHtml;
-    alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    zoneErreurs.innerHTML =
+      '<div class="alert alert-danger" role="alert">' +
+        '<h5 class="alert-heading h6 fw-bold">Erreur de validation</h5>' +
+        '<ul class="mb-0 ps-3">' + liste + '</ul>' +
+      '</div>';
     return;
   }
 
-  const calc = updatePriceCalculation();
-  if (alertContainer) alertContainer.innerHTML = '';
+  zoneErreurs.innerHTML = "";
+  var calcul = calculer();
 
-  const recapActiviteEl = document.getElementById('recap-activite');
-  const recapDateEl = document.getElementById('recap-date');
-  const recapParticipantsEl = document.getElementById('recap-participants');
-  const recapTypeEl = document.getElementById('recap-type');
-  const recapTotalEl = document.getElementById('recap-total');
-  const recapDetailsEl = document.getElementById('recap-details');
+  var morceaux = date.split("-");
+  var dateFrancaise = morceaux[2] + "/" + morceaux[1] + "/" + morceaux[0];
 
-  if (recapActiviteEl) recapActiviteEl.textContent = calc.activityData.titre;
-  if (recapDateEl) recapDateEl.textContent = formatDateFR(dateVisite);
-  if (recapParticipantsEl) recapParticipantsEl.textContent = `${calc.participants} personne${calc.participants > 1 ? 's' : ''}`;
-  if (recapTypeEl) recapTypeEl.textContent = participationType.value;
-  if (recapTotalEl) recapTotalEl.textContent = `${calc.total} TND`;
-
-  if (recapDetailsEl) {
-    recapDetailsEl.textContent = `(Sous-total : ${calc.subtotal} TND — Remise : ${calc.discount} TND)`;
+  var texteParticipants = calcul.personnes + " personne";
+  if (calcul.personnes > 1) {
+    texteParticipants += "s";
   }
 
-  if (recapContainer) {
-    recapContainer.classList.remove('d-none');
-    recapContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  document.getElementById("recap-activite").textContent = noms[choixActivite.value];
+  document.getElementById("recap-date").textContent = dateFrancaise;
+  document.getElementById("recap-participants").textContent = texteParticipants;
+  document.getElementById("recap-type").textContent = type.value;
+  document.getElementById("recap-total").textContent = calcul.total + " TND";
+  document.getElementById("recap-details").textContent =
+    "(Sous-total : " + calcul.sousTotal + " TND — Remise : " + calcul.remise + " TND)";
+
+  zoneRecap.classList.remove("d-none");
 }
 
-function formatDateFR(dateStr) {
-  const parts = dateStr.split('-');
-  if (parts.length === 3) {
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
-  }
-  return dateStr;
+champDate.min = dateAujourdhui();
+
+var id = new URLSearchParams(window.location.search).get("id");
+if (id !== null && prix[id] !== undefined) {
+  choixActivite.value = id;
 }
+
+calculer();
+
+
+choixActivite.onchange = calculer;
+champParticipants.oninput = calculer;
+document.getElementById("btn-calculer").onclick = calculer;
+
+formulaire.onsubmit = function (event) {
+  event.preventDefault();
+  valider();
+};
+
+document.getElementById("btn-reset").onclick = function () {
+  formulaire.reset();
+  zoneErreurs.innerHTML = "";
+  zoneRecap.classList.add("d-none");
+  calculer();
+};
