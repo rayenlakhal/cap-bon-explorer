@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="100%" height="auto" class="rounded shadow-sm">
+  <defs>
+    <linearGradient id="mapWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2eff7"/>
+      <stop offset="100%" stop-color="#cbe3f0"/>
+    </linearGradient>
+    <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Mediterranean sea background -->
+  <rect width="600" height="420" fill="url(#mapWater)"/>
+  
+  <!-- Subtle sea wave patterns -->
+  <path d="M 30 50 Q 60 45 90 50 T 150 50" stroke="#b4d5e7" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 450 80 Q 480 75 510 80 T 570 80" stroke="#b4d5e7" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 40 380 Q 70 375 100 380 T 160 380" stroke="#b4d5e7" stroke-width="2" fill="none" opacity="0.6"/>
+  <text x="450" y="50" font-family="'Segoe UI', sans-serif" font-size="12" font-style="italic" fill="#6a9bb8">Mer Méditerranée</text>
+  <text x="30" y="240" font-family="'Segoe UI', sans-serif" font-size="12" font-style="italic" fill="#6a9bb8">Golfe de Tunis</text>
+
+  <!-- Cap Bon Peninsula Landmass -->
+  <path d="M 120 420 
+           C 140 340, 160 310, 190 270 
+           C 210 240, 230 200, 260 160 
+           C 290 120, 330 70, 360 40 
+           C 375 25, 395 30, 405 55 
+           C 420 90, 430 130, 435 170 
+           C 440 210, 430 250, 400 300 
+           C 370 350, 340 380, 320 420 Z" 
+        fill="#fbf7ed" stroke="#d5c8b2" stroke-width="3" filter="url(#mapShadow)"/>
+
+  <!-- Cap Bon relief & mountain area (Djebel Abderrahmane) -->
+  <path d="M 280 180 Q 330 160 350 200 Q 320 240 280 220 Z" fill="#e9e0ce" opacity="0.7"/>
+  <text x="305" y="195" font-family="'Segoe UI', sans-serif" font-size="10" fill="#8c7853" font-weight="600">Dj. Abderrahmane</text>
+
+  <!-- Regional route MC27 / MC26 -->
+  <path d="M 220 330 Q 280 270 340 180 T 385 65" stroke="#e09f67" stroke-width="2.5" stroke-dasharray="4 3" fill="none"/>
+  <path d="M 220 330 Q 320 320 415 190" stroke="#e09f67" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+
+  <!-- Pins & Cities -->
+  <!-- 1. El Haouaria (Cap Bon Tip) -->
+  <circle cx="375" cy="50" r="5" fill="#1b4965"/>
+  <text x="390" y="54" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="bold" fill="#1b4965">El Haouaria</text>
+
+  <!-- 2. Kerkouane -->
+  <circle cx="420" cy="115" r="5" fill="#b85a3c"/>
+  <text x="435" y="119" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="bold" fill="#b85a3c">Kerkouane (Ruines)</text>
+
+  <!-- 3. Kélibia -->
+  <circle cx="425" cy="180" r="6" fill="#1b4965"/>
+  <text x="440" y="184" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#1b4965">Kélibia (Fort)</text>
+
+  <!-- 4. Nabeul (Headquarters) -->
+  <g transform="translate(260, 310)">
+    <circle cx="0" cy="0" r="14" fill="#b85a3c" opacity="0.25"/>
+    <circle cx="0" cy="0" r="8" fill="#b85a3c"/>
+    <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+    <rect x="15" y="-18" width="180" height="34" rx="6" fill="#ffffff" stroke="#b85a3c" stroke-width="1.5" filter="url(#mapShadow)"/>
+    <text x="25" y="-3" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#b85a3c">Nabeul (Agence)</text>
+    <text x="25" y="10" font-family="'Segoe UI', sans-serif" font-size="9.5" fill="#495057">14 Av. Habib Bourguiba</text>
+  </g>
+
+  <!-- 5. Hammamet -->
+  <circle cx="205" cy="355" r="5" fill="#1b4965"/>
+  <text x="135" y="360" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="bold" fill="#1b4965">Hammamet</text>
+
+  <!-- Compass Rose -->
+  <g transform="translate(540, 350)">
+    <circle cx="0" cy="0" r="22" fill="#ffffff" stroke="#c0d3de" stroke-width="1.5"/>
+    <polygon points="0,-18 5,-4 0,0 -5,-4" fill="#b85a3c"/>
+    <polygon points="0,18 5,4 0,0 -5,4" fill="#6c757d"/>
+    <polygon points="18,0 4,5 0,0 4,-5" fill="#6c757d"/>
+    <polygon points="-18,0 -4,5 0,0 -4,-5" fill="#6c757d"/>
+    <text x="-4" y="-21" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#b85a3c">N</text>
+  </g>
+
+  <!-- Legend bar -->
+  <rect x="15" y="15" width="200" height="50" rx="5" fill="#ffffff" opacity="0.92" stroke="#d5c8b2"/>
+  <circle cx="30" cy="32" r="5" fill="#b85a3c"/>
+  <text x="45" y="36" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#2b2d42">Cap Bon Explorer (Siège)</text>
+  <circle cx="30" cy="50" r="4" fill="#1b4965"/>
+  <text x="45" y="54" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#2b2d42">Sites d'expériences &amp; visites</text>
+</svg>

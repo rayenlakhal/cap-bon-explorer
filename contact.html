@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact et FAQ Cap Bon Explorer à Nabeul.">
+  <title>Contact &amp; FAQ — Cap Bon Explorer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="42">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-theme">Mode Sombre</button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse order-lg-2" id="navbarMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="activites.html">Activités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="agenda.html">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reservation.html">Réservation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="contact.html">Contact &amp; FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+
+    <div class="text-center mb-4">
+      <h1 class="h3 fw-bold">Contact &amp; Foire Aux Questions</h1>
+      <p class="text-secondary">Retrouvez nos coordonnées à Nabeul, nos horaires et les réponses aux questions courantes.</p>
+    </div>
+
+    <div class="row g-4 mb-4">
+      
+      <div class="col-12 col-md-5">
+        <section class="card p-3 h-100 shadow-sm">
+          <h2 class="h5 mb-3 border-bottom pb-2">Nous contacter</h2>
+          
+          <address class="small mb-3">
+            <p class="mb-2">
+              <i class="bi bi-geo-alt-fill text-danger me-2"></i>
+              <strong>Adresse :</strong><br>
+              14 Avenue Habib Bourguiba, 8000 Nabeul (Tunisie)
+            </p>
+            <p class="mb-2">
+              <i class="bi bi-telephone-fill text-primary me-2"></i>
+              <strong>Téléphone :</strong> +216 72 285 000
+            </p>
+            <p class="mb-0">
+              <i class="bi bi-envelope-fill text-secondary me-2"></i>
+              <strong>E-mail :</strong> contact@capbonexplorer.tn
+            </p>
+          </address>
+
+          <h3 class="h6 fw-bold mt-2 mb-2">Horaires d'accueil</h3>
+          <table class="table table-sm table-bordered small mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>Période</th>
+                <th>Heures</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lundi – Vendredi</td>
+                <td>08:30 – 12:30 / 14:00 – 18:00</td>
+              </tr>
+              <tr>
+                <td>Samedi</td>
+                <td>09:00 – 13:00</td>
+              </tr>
+              <tr>
+                <td>Dimanche</td>
+                <td class="text-muted">Activités sur réservation</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="col-12 col-md-7">
+        <section class="card p-3 h-100 shadow-sm">
+          <h2 class="h6 mb-2">Localisation des activités</h2>
+          <img src="images/carte-nabeul.svg" alt="Carte statique du Cap Bon" class="img-fluid border rounded" style="max-height: 280px; width: 100%; object-fit: contain;">
+          <p class="small text-muted mt-2 mb-0 text-center">Carte statique de la péninsule (Nabeul, Hammamet, Kélibia, Kerkouane).</p>
+        </section>
+      </div>
+
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-12 col-md-6">
+        <section class="card p-3 shadow-sm h-100">
+          <h2 class="h5 mb-3 border-bottom pb-2">Foire aux questions</h2>
+
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                  Comment régler le montant de l'activité ?
+                </button>
+              </h3>
+              <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body small text-secondary">
+                  Ce site est une démonstration pédagogique : aucun paiement n'est effectué en ligne. Le règlement se fait sur place auprès de l'artisan ou du guide.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                  Comment fonctionne la remise de 10% ?
+                </button>
+              </h3>
+              <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body small text-secondary">
+                  La remise s'applique automatiquement sur le simulateur dès que le groupe compte 4 personnes ou plus (jusqu'à 6 personnes maximum).
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                  Les ateliers sont-ils adaptés aux enfants ?
+                </button>
+              </h3>
+              <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body small text-secondary">
+                  Oui, les initiations à la poterie (A02) et à la céramique (A06) sont ouvertes aux familles et aux enfants à partir de 6 ans.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  Quel équipement prévoir pour la randonnée ?
+                </button>
+              </h3>
+              <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body small text-secondary">
+                  Prévoyez des chaussures de marche adaptées, une gourde d'eau et une protection contre le soleil (chapeau, crème).
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <section class="card p-3 shadow-sm h-100">
+          <h2 class="h5 mb-3 border-bottom pb-2">Formulaire de contact</h2>
+
+          <div id="contact-success-alert" class="alert alert-success d-none py-2 small mb-3">
+            Message envoyé avec succès (simulation locale) !
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="mb-2">
+              <label for="contact-nom" class="form-label small fw-bold">Nom complet <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm" id="contact-nom" required>
+            </div>
+
+            <div class="mb-2">
+              <label for="contact-email" class="form-label small fw-bold">E-mail <span class="text-danger">*</span></label>
+              <input type="email" class="form-control form-control-sm" id="contact-email" required>
+            </div>
+
+            <div class="mb-2">
+              <label for="contact-sujet" class="form-label small fw-bold">Sujet <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm" id="contact-sujet" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="contact-message" class="form-label small fw-bold">Message <span class="text-danger">*</span></label>
+              <textarea class="form-control form-control-sm" id="contact-message" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-cbe-primary">
+              Envoyer le message
+            </button>
+          </form>
+        </section>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="34" class="bg-white rounded p-1 mb-2">
+          <p class="small">Portail touristique et artisanal interactif du Cap Bon.</p>
+          <p class="small text-muted mb-0">Projet pédagogique — données et tarifs fictifs.</p>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-1"><a href="index.html">Accueil</a></li>
+            <li class="mb-1"><a href="activites.html">Activités</a></li>
+            <li class="mb-1"><a href="agenda.html">Agenda</a></li>
+            <li class="mb-1"><a href="reservation.html">Réservation</a></li>
+            <li class="mb-1"><a href="contact.html">Contact &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <h5>ISET Nabeul</h5>
+          <p class="small mb-1">Département Informatique &bull; Dév. Web côté client</p>
+          <p class="small mb-2">Encadrant : <strong>M. Mohamed Najeh ISSAOUI</strong></p>
+          <a href="contact.html" class="btn btn-sm btn-outline-light">Haut de page</a>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top border-secondary">
+        <p class="small mb-0">&copy; <span id="current-year">2026</span> Cap Bon Explorer</p>
+        <p class="small mb-0">Mini-projet ISET Nabeul</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      const alertBox = document.getElementById('contact-success-alert');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+          }
+          if (alertBox) alertBox.classList.remove('d-none');
+          form.reset();
+          form.classList.remove('was-validated');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

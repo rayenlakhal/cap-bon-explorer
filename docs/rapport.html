@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rapport de Projet — Cap Bon Explorer (ISET Nabeul)</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.5;
+      color: #2b2d42;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .cover {
+      text-align: center;
+      padding: 60px 20px;
+      border: 2px solid #b85a3c;
+      border-radius: 8px;
+      margin-bottom: 50px;
+      page-break-after: always;
+    }
+    .cover h1 {
+      color: #1b4965;
+      font-size: 28pt;
+      margin-bottom: 5px;
+    }
+    .cover h2 {
+      color: #b85a3c;
+      font-size: 18pt;
+      font-weight: 600;
+      margin-top: 0;
+    }
+    .cover .subtitle {
+      font-size: 13pt;
+      color: #555;
+      margin: 25px 0;
+    }
+    .cover .meta {
+      margin-top: 60px;
+      font-size: 11pt;
+      line-height: 1.8;
+      color: #333;
+    }
+    h2.section-title {
+      color: #1b4965;
+      border-bottom: 2px solid #b85a3c;
+      padding-bottom: 6px;
+      margin-top: 35px;
+      font-size: 16pt;
+    }
+    h3 {
+      color: #b85a3c;
+      font-size: 13pt;
+      margin-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 10pt;
+    }
+    th, td {
+      border: 1px solid #d5c8b2;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #1b4965;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #fbf7ed;
+    }
+    .badge-ok {
+      color: #15803d;
+      font-weight: bold;
+    }
+    code, pre {
+      background: #f4f0e8;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      padding: 12px;
+      font-size: 9.5pt;
+      line-height: 1.4;
+    }
+    .page-break {
+      page-break-after: always;
+    }
+    @media print {
+      body { padding: 0; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Page de garde -->
+  <div class="cover">
+    <p style="text-transform: uppercase; letter-spacing: 1px; font-weight: bold; color: #1b4965; margin-bottom: 5px;">
+      Institut Supérieur des Études Technologiques de Nabeul
+    </p>
+    <p style="color: #666; font-size: 11pt; margin-top: 0;">Département Informatique — Développement Web côté client</p>
+    
+    <div style="margin: 45px 0;">
+      <span style="background: #fbeee8; color: #b85a3c; font-weight: bold; padding: 6px 14px; border-radius: 20px; font-size: 11pt; text-transform: uppercase;">
+        Mini-projet Web 2026–2027
+      </span>
+      <h1 style="margin-top: 20px;">CAP BON EXPLORER</h1>
+      <h2>Conception d'un portail touristique interactif et responsive</h2>
+      <p class="subtitle">HTML5 · CSS3 · Bootstrap 5.3 · JavaScript Natif</p>
+    </div>
+
+    <div class="meta">
+      <strong>Semestre :</strong> 1 &nbsp;|&nbsp; <strong>Niveau :</strong> Développement Web côté client<br>
+      <strong>Organisation :</strong> Monôme<br>
+      <strong>Encadrant :</strong> M. Mohamed Najeh ISSAOUI (<code>mednajehissaoui@gmail.com</code>)<br>
+      <strong>Remise :</strong> Novembre 2026
+    </div>
+  </div>
+
+  <!-- Contenu du rapport -->
+  <h2 class="section-title">1. Introduction et Objectifs</h2>
+  <p>
+    La péninsule du Cap Bon constitue l’un des pôles culturels et artisanaux les plus vivants de Tunisie. Le projet <strong>Cap Bon Explorer</strong> matérialise la vitrine numérique interactive d'une structure touristique fictive valorisant le patrimoine, la poterie de Nabeul, les sites antiques de Kerkouane et les espaces naturels côtiers.
+  </p>
+  <p>
+    Le portail est développé en <strong>JavaScript natif côté client</strong>, sans framework lourd ni backend, afin de mettre en œuvre les fondements du développement web moderne : sémantique HTML5 stricte, stylisation personnalisée CSS3, grille adaptative Bootstrap 5.3 et manipulation dynamique du DOM.
+  </p>
+
+  <h2 class="section-title">2. Organisation des Fichiers</h2>
+  <pre>
+cap-bon-explorer/
+├── index.html           # Accueil (bannière, qui sommes-nous, 3 atouts)
+├── activites.html       # Catalogue des 8 activités, filtres combinés et modale
+├── agenda.html          # Calendrier en tableau responsive (6 événements)
+├── reservation.html     # Simulateur de prix, remise 10% >= 4 pers., validation
+├── contact.html         # Coordonnées Nabeul, horaires, carte statique et FAQ
+├── css/style.css        # Charte graphique artisanale & variables de thème
+├── js/
+│   ├── app.js           # Mode clair/sombre localStorage & utilitaires
+│   ├── activites.js     # Données, recherche instantanée & modale
+│   └── reservation.js   # Calculs, contrôles de formulaires & récapitulatif
+├── images/              # Logo SVG, carte vectorielle & 9 photographies
+└── docs/                # Documentation et rapport de projet
+  </pre>
+
+  <div class="page-break"></div>
+
+  <h2 class="section-title">3. Fonctionnalités et Réalisations Techniques</h2>
+  
+  <h3>3.1. Structure HTML5 & Ergonomie</h3>
+  <ul>
+    <li>Balisage sémantique systématique (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>aside</code>, <code>footer</code>, <code>table</code>, <code>caption</code>).</li>
+    <li>Navigation unifiée avec indication visuelle de la page active et accessibilité soignée (attributs <code>alt</code> sur toutes les images, balises <code>label</code> reliées aux identifiants des champs).</li>
+  </ul>
+
+  <h3>3.2. Identité Graphique CSS3 & Thème Sombre</h3>
+  <ul>
+    <li>Palette méditerranéenne inspirée de la faïence nabeulienne : Terracotta (<code>#b85a3c</code>), Bleu Céramique (<code>#1b4965</code>) et teinte sableuse (<code>#fbf9f5</code>).</li>
+    <li>Bascule de thème jour/nuit avec conservation du choix dans le <code>localStorage</code> du navigateur.</li>
+    <li>Micro-animations et transitions douces sur les cartes d'activités, boutons et éléments de formulaire.</li>
+  </ul>
+
+  <h3>3.3. Logique JavaScript Côté Client</h3>
+  <ul>
+    <li><strong>Filtrage combiné (Section 3 Page 3) :</strong> Prise en compte simultanée du filtre de thématique (Culture, Artisanat, Nature, Découverte) et de la recherche mot-clé (titre ou lieu), avec mise à jour instantanée du compteur visible.</li>
+    <li><strong>Simulation tarifaire (Section 3 Page 4) :</strong> Application stricte de la remise de 10% pour les groupes de 4 personnes et plus. Affichage distinct du sous-total, de la remise et du total en Dinars Tunisiens (TND).</li>
+    <li><strong>Validation rigoureuse :</strong> Blocage immédiat de la validation si la date choisie est antérieure à la date système du jour, si l'email est syntaxiquement incorrect ou si la case de consentement n'est pas cochée.</li>
+  </ul>
+
+  <h2 class="section-title">4. Tableau Récapitulatif des Tests de Conformité</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 8%;">N°</th>
+        <th style="width: 32%;">Manipulation testée</th>
+        <th style="width: 45%;">Résultat attendu selon le cahier des charges</th>
+        <th style="width: 15%;">Résultat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>T01</strong></td>
+        <td>Ouvrir la page Activités sans filtre</td>
+        <td>8 cartes visibles et compteur = 8.</td>
+        <td class="badge-ok">Conforme (8)</td>
+      </tr>
+      <tr>
+        <td><strong>T02</strong></td>
+        <td>Rechercher « poterie »</td>
+        <td>Seule l’activité A02 reste affichée.</td>
+        <td class="badge-ok">Conforme (A02)</td>
+      </tr>
+      <tr>
+        <td><strong>T03</strong></td>
+        <td>Choisir « Nature » avec recherche vide</td>
+        <td>2 cartes : A04 et A05.</td>
+        <td class="badge-ok">Conforme (2)</td>
+      </tr>
+      <tr>
+        <td><strong>T04</strong></td>
+        <td>Choisir « Nature » puis saisir « poterie »</td>
+        <td>0 résultat et message explicite « Aucune activité trouvée ».</td>
+        <td class="badge-ok">Conforme (0)</td>
+      </tr>
+      <tr>
+        <td><strong>T05</strong></td>
+        <td>Afficher les détails de A06</td>
+        <td>La modal présente la peinture sur céramique.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T06</strong></td>
+        <td>Réserver A02 pour 2 personnes</td>
+        <td>Sous-total = 70 TND, remise = 0, total = 70.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T07</strong></td>
+        <td>Réserver A06 pour 4 personnes</td>
+        <td>Sous-total = 100 TND, remise = 10, total = 90.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T08</strong></td>
+        <td>Saisir une date de réservation passée</td>
+        <td>La validation est refusée et l’erreur expliquée.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T09</strong></td>
+        <td>Soumettre sans e-mail valide ou sans consentement</td>
+        <td>Aucune confirmation de simulation.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T10</strong></td>
+        <td>Tester sur un écran étroit (360–390 px)</td>
+        <td>Menu utilisable, cartes lisibles, aucun débordement horizontal.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T11</strong></td>
+        <td>Cliquer sur « Réinitialiser »</td>
+        <td>Champs et récapitulatif reviennent à l’état prévu.</td>
+        <td class="badge-ok">Conforme</td>
+      </tr>
+      <tr>
+        <td><strong>T12</strong></td>
+        <td>Ouvrir les cinq pages et naviguer</td>
+        <td>Aucun lien brisé ni erreur JavaScript dans la console.</td>
+        <td class="badge-ok">Conforme (0 err)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">5. Sources des Données et Images</h2>
+  <p>
+    Toutes les données tarifaires et descriptives respectent les spécifications de la Section 4 du sujet. Les visuels photographiques proviennent de banques d'images libres de droits documentant fidèlement le Cap Bon, et le logo ainsi que la carte géographique sont des créations vectorielles SVG autonomes.
+  </p>
+
+</body>
+</html>

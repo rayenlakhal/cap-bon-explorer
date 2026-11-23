@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="terracottaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b85a3c"/>
+      <stop offset="100%" stop-color="#913d24"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b4965"/>
+      <stop offset="100%" stop-color="#2a6f97"/>
+    </linearGradient>
+  </defs>
+  <!-- Jar / Amphora of Nabeul icon -->
+  <g transform="translate(10, 8)">
+    <!-- Sun/Horizon circle -->
+    <circle cx="32" cy="32" r="28" fill="#fbf0e8"/>
+    <!-- Mediterranean sea wave -->
+    <path d="M 10 44 Q 22 38 34 44 T 56 42 L 56 52 Q 44 54 32 50 T 10 52 Z" fill="url(#seaGrad)" opacity="0.85"/>
+    <!-- Ceramic Amphora silhouette -->
+    <path d="M 28 14 H 36 V 18 C 36 21 44 24 44 32 C 44 42 38 46 32 46 C 26 46 20 42 20 32 C 20 24 28 21 28 18 Z" fill="url(#terracottaGrad)"/>
+    <!-- Amphora handles -->
+    <path d="M 23 23 C 18 25 18 31 23 33" stroke="url(#terracottaGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 41 23 C 46 25 46 31 41 33" stroke="url(#terracottaGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="32" cy="14" rx="4.5" ry="1.5" fill="#fbf0e8"/>
+  </g>
+  <!-- Text Brand -->
+  <text x="78" y="38" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#1b4965" letter-spacing="-0.5">CAP BON</text>
+  <text x="180" y="38" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="22" font-weight="300" fill="#b85a3c">EXPLORER</text>
+  <text x="79" y="55" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#6c757d" letter-spacing="2">PORTAIL TOURISTIQUE &amp; ARTISANAL</text>
+</svg>

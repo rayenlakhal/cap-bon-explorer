@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agenda des événements et sorties au Cap Bon.">
+  <title>Agenda — Cap Bon Explorer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="42">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-theme">Mode Sombre</button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse order-lg-2" id="navbarMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="activites.html">Activités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="agenda.html">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reservation.html">Réservation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact &amp; FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+
+    <div class="text-center mb-4">
+      <h1 class="h3 fw-bold">Agenda des Sorties et Ateliers</h1>
+      <p class="text-secondary">Consultez le calendrier de nos prochaines sorties collectives prévues pour la saison 2026–2027.</p>
+    </div>
+
+    <section class="card p-3 mb-5 shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle mb-0">
+          <caption class="text-secondary small">Calendrier prévisionnel des activités — Données de la section 4.2</caption>
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Activité</th>
+              <th scope="col">Heure</th>
+              <th scope="col">Lieu</th>
+              <th scope="col" class="text-end">Tarif</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>05/12/2026</td>
+              <td>Promenade photographique</td>
+              <td>09:30</td>
+              <td>Hammamet</td>
+              <td class="text-end fw-bold text-success">30 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A08" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+            <tr>
+              <td>12/12/2026</td>
+              <td>Initiation à la poterie</td>
+              <td>10:00</td>
+              <td>Nabeul</td>
+              <td class="text-end fw-bold text-success">35 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A02" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+            <tr>
+              <td>19/12/2026</td>
+              <td>Randonnée découverte</td>
+              <td>08:30</td>
+              <td>Cap Bon</td>
+              <td class="text-end fw-bold text-success">25 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A04" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+            <tr>
+              <td>09/01/2027</td>
+              <td>Découverte de la médina</td>
+              <td>10:00</td>
+              <td>Nabeul</td>
+              <td class="text-end fw-bold text-success">20 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A01" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+            <tr>
+              <td>16/01/2027</td>
+              <td>Peinture sur céramique</td>
+              <td>14:00</td>
+              <td>Nabeul</td>
+              <td class="text-end fw-bold text-success">25 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A06" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+            <tr>
+              <td>23/01/2027</td>
+              <td>Découverte du marché local</td>
+              <td>09:00</td>
+              <td>Nabeul</td>
+              <td class="text-end fw-bold text-success">15 TND</td>
+              <td class="text-center">
+                <a href="reservation.html?id=A07" class="btn btn-sm btn-cbe-primary py-0 px-2">Réserver</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card p-4 border shadow-sm">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h2 class="h5 mb-2">Prochaines expériences</h2>
+          <p class="small text-secondary mb-3 mb-md-0">
+            Vous souhaitez participer à une sortie ou choisir une activité spécifique à une autre date ?
+          </p>
+        </div>
+        <div class="col-12 col-md-4 d-flex flex-column flex-sm-row gap-2 justify-content-md-end">
+          <a href="activites.html" class="btn btn-sm btn-outline-secondary">
+            Consulter les activités
+          </a>
+          <a href="reservation.html" class="btn btn-sm btn-cbe-primary">
+            Simuler une réservation
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="34" class="bg-white rounded p-1 mb-2">
+          <p class="small">Portail touristique et artisanal interactif du Cap Bon.</p>
+          <p class="small text-muted mb-0">Projet pédagogique — données et tarifs fictifs.</p>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-1"><a href="index.html">Accueil</a></li>
+            <li class="mb-1"><a href="activites.html">Activités</a></li>
+            <li class="mb-1"><a href="agenda.html">Agenda</a></li>
+            <li class="mb-1"><a href="reservation.html">Réservation</a></li>
+            <li class="mb-1"><a href="contact.html">Contact &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <h5>ISET Nabeul</h5>
+          <p class="small mb-1">Département Informatique &bull; Dév. Web côté client</p>
+          <p class="small mb-2">Encadrant : <strong>M. Mohamed Najeh ISSAOUI</strong></p>
+          <a href="agenda.html" class="btn btn-sm btn-outline-light">Haut de page</a>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top border-secondary">
+        <p class="small mb-0">&copy; <span id="current-year">2026</span> Cap Bon Explorer</p>
+        <p class="small mb-0">Mini-projet ISET Nabeul</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

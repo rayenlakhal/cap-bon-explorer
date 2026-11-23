@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simulateur de réservation Cap Bon Explorer.">
+  <title>Réservation — Cap Bon Explorer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="42">
+        </a>
+        
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-theme">Mode Sombre</button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse order-lg-2" id="navbarMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="activites.html">Activités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="agenda.html">Agenda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="reservation.html">Réservation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact &amp; FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+
+    <div class="text-center mb-4">
+      <h1 class="h3 fw-bold">Simulateur de Réservation</h1>
+      <p class="text-secondary">Renseignez le formulaire ci-dessous pour simuler le prix de votre activité. Remise automatique de 10% dès 4 personnes.</p>
+    </div>
+
+    <div id="form-alerts" class="mb-3"></div>
+
+    <div id="recap-container" class="card p-4 mb-4 border-primary shadow-sm d-none">
+      <h2 class="h5 text-success mb-3"><i class="bi bi-check-circle me-2"></i>Récapitulatif de la simulation</h2>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Activité :</span>
+          <strong id="recap-activite"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Date prévue :</span>
+          <strong id="recap-date"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Participants :</span>
+          <strong id="recap-participants"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Type de participation :</span>
+          <strong id="recap-type"></strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between list-group-item-info">
+          <span>Montant total :</span>
+          <strong id="recap-total" class="fs-5 text-primary"></strong>
+        </li>
+      </ul>
+      <p id="recap-details" class="small text-muted mb-2"></p>
+      
+      <div class="alert alert-info mb-0 py-2 small">
+        <strong>Simulation enregistrée localement à l’écran : aucune réservation réelle n’a été effectuée.</strong>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-12 col-lg-7">
+        <div class="card p-4 shadow-sm">
+          <h2 class="h5 mb-3 border-bottom pb-2">Informations de réservation</h2>
+
+          <form id="reservation-form" novalidate>
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label for="nom" class="form-label small fw-bold">Nom <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="nom" required>
+              </div>
+              <div class="col-md-6">
+                <label for="prenom" class="form-label small fw-bold">Prénom <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="prenom" required>
+              </div>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label for="email" class="form-label small fw-bold">Adresse e-mail <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" placeholder="nom@exemple.tn" required>
+              </div>
+              <div class="col-md-6">
+                <label for="telephone" class="form-label small fw-bold">Téléphone <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="telephone" placeholder="Numéro de contact" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="activite" class="form-label small fw-bold">Activité choisie <span class="text-danger">*</span></label>
+              <select class="form-select" id="activite" required>
+                <option value="A01">A01 — Découverte de la médina (Nabeul) — 20 TND</option>
+                <option value="A02">A02 — Atelier d’initiation à la poterie (Nabeul) — 35 TND</option>
+                <option value="A03">A03 — Parcours découverte de Kerkouane (Kerkouane) — 30 TND</option>
+                <option value="A04">A04 — Randonnée découverte (Djebel Abderrahmane) — 25 TND</option>
+                <option value="A05">A05 — Circuit du littoral (Kélibia) — 40 TND</option>
+                <option value="A06">A06 — Peinture sur céramique (Nabeul) — 25 TND</option>
+                <option value="A07">A07 — Découverte d’un marché local (Nabeul) — 15 TND</option>
+                <option value="A08">A08 — Promenade photographique (Hammamet) — 30 TND</option>
+              </select>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-md-6">
+                <label for="date_visite" class="form-label small fw-bold">Date souhaitée <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="date_visite" required>
+              </div>
+              <div class="col-md-6">
+                <label for="participants" class="form-label small fw-bold">Participants (1 à 6) <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="participants" min="1" max="6" value="1" required>
+              </div>
+            </div>
+
+            <fieldset class="mb-3">
+              <legend class="form-label small fw-bold d-block">Type de participation <span class="text-danger">*</span></legend>
+              <div class="d-flex gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="type_participation" id="part_individuel" value="individuel" checked>
+                  <label class="form-check-label small" for="part_individuel">Individuel</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="type_participation" id="part_famille" value="famille">
+                  <label class="form-check-label small" for="part_famille">Famille</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="type_participation" id="part_groupe" value="groupe">
+                  <label class="form-check-label small" for="part_groupe">Groupe</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="mb-3">
+              <label for="commentaire" class="form-label small fw-bold">Commentaire / Remarques</label>
+              <textarea class="form-control" id="commentaire" rows="2" placeholder="Précisions éventuelles..."></textarea>
+            </div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="consentement" required>
+              <label class="form-check-label small" for="consentement">
+                J'accepte les conditions de la simulation (démonstration pédagogique). <span class="text-danger">*</span>
+              </label>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <button type="submit" class="btn btn-cbe-primary" id="btn-valider">
+                Valider la simulation
+              </button>
+              <button type="button" class="btn btn-outline-secondary" id="btn-calculer">
+                Calculer / Actualiser
+              </button>
+              <button type="button" class="btn btn-outline-danger" id="btn-reset">
+                Réinitialiser
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <aside id="bloc-estimation" class="shadow-sm sticky-top" style="top: 80px;">
+          <h2 class="h5 mb-3 border-bottom pb-2">Calcul du montant</h2>
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Prix unitaire :</span>
+            <strong id="display-unit-price">20 TND</strong>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Sous-total :</span>
+            <strong id="display-subtotal">20 TND</strong>
+          </div>
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">
+              Remise (10% si &ge; 4 pers.) :
+              <small id="display-discount-notice" class="badge bg-success d-none">-10%</small>
+            </span>
+            <strong id="display-discount" class="text-success">0 TND</strong>
+          </div>
+
+          <hr>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold fs-5">Total :</span>
+            <strong id="display-total" class="fs-4 text-primary">20 TND</strong>
+          </div>
+
+          <div class="small text-muted border-top pt-2">
+            <p class="mb-1"><i class="bi bi-info-circle me-1"></i> Règle de calcul appliquée :</p>
+            <p class="mb-0">Sous-total = prix &times; participants. Remise = 10% si participants &ge; 4.</p>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-12 col-md-5">
+          <img src="images/logo.svg" alt="Cap Bon Explorer" height="34" class="bg-white rounded p-1 mb-2">
+          <p class="small">Portail touristique et artisanal interactif du Cap Bon.</p>
+          <p class="small text-muted mb-0">Projet pédagogique — données et tarifs fictifs.</p>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-1"><a href="index.html">Accueil</a></li>
+            <li class="mb-1"><a href="activites.html">Activités</a></li>
+            <li class="mb-1"><a href="agenda.html">Agenda</a></li>
+            <li class="mb-1"><a href="reservation.html">Réservation</a></li>
+            <li class="mb-1"><a href="contact.html">Contact &amp; FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <h5>ISET Nabeul</h5>
+          <p class="small mb-1">Département Informatique &bull; Dév. Web côté client</p>
+          <p class="small mb-2">Encadrant : <strong>M. Mohamed Najeh ISSAOUI</strong></p>
+          <a href="reservation.html" class="btn btn-sm btn-outline-light">Haut de page</a>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center pt-3 mt-3 border-top border-secondary">
+        <p class="small mb-0">&copy; <span id="current-year">2026</span> Cap Bon Explorer</p>
+        <p class="small mb-0">Mini-projet ISET Nabeul</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  <script src="js/reservation.js"></script>
+</body>
+</html>
